@@ -28,7 +28,7 @@ function App() {
 
   const [results, setResults] = useState([]);
   const [reloaded, setReloaded] = useState(false);
-  const url = `https://newsapi.org/v2/everything?q=food+news&language=en&pageSize=100&sortBy=publishedAt&apiKey=${process.env.REACT_APP_NEWS_API}`;
+  const url = `https://newsapi.org/v2/everything?q=recipes&language=en&pageSize=100&sortBy=publishedAt&apiKey=${process.env.REACT_APP_NEWS_API}`;
 
   function reload() {
     window.scroll({ top: 0, left: 0, behavior: "smooth" });
