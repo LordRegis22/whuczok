@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSpring, animated } from "react-spring";
 import isabelle from "../img/isabelle.png";
+import Search from "./Search.js";
 
 function Navbar(props) {
   const [scrolled, setScrolled] = useState(false);
