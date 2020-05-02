@@ -1,0 +1,101 @@
+:root {
+  --background: #381460;
+  --primary: #b21f66;
+  --secondary: #fe346e;
+  --tertiary: #ffbd69;
+  box-sizing: border-box;
+  background-color: var(--background);
+  color: white;
+}
+
+.App {
+  margin-top: 0;
+  max-width: 100vw;
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary);
+  font-size: 1rem;
+}
+
+a.visited {
+  text-decoration: none;
+  color: var(--background);
+  font-size: 1rem;
+}
+
+.navbar {
+  background-color: var(--primary);
+  color: white;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0px;
+  z-index: 1;
+  /* transition: all 0.7s; */
+}
+
+.navbar img {
+  margin: 0 0.75rem;
+  height: 100%;
+  display: inline-block;
+}
+
+.CardCatalog {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  justify-content: center;
+  margin: 5rem 10vw 0 10vw;
+}
+
+.Card {
+  height: auto;
+  width: 90%;
+  position: relative;
+  border-radius: 5px;
+  border: 1px solid var(--background);
+  padding: 1rem;
+  box-shadow: 1px 1px 5px var(--secondary);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  overflow: hidden;
+  background-color: white;
+  color: var(--secondary);
+}
+
+.ReloadedMessage {
+  border-radius: 5px;
+  border: 1px solid var(--secondary);
+  color: var(--secondary);
+  text-align: center;
+  overflow: hidden;
+  background-color: rgba(254, 52, 110, 0.2) !important;
+}
+
+.FavoriteStar {
+  position: absolute;
+  font-size: 2rem;
+  top: 25px;
+  right: 25px;
+  color: var(--tertiary);
+}
+
+/* .loading-spinner {
+  color: var(--background);
+} */
+
+/* @media (min-width: 768px) {
+  .Card {
+    width: 40%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .Card {
+    width: 90%;
+  }
+} */
