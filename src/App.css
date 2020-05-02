@@ -43,6 +43,34 @@ a.visited {
   display: inline-block;
 }
 
+.Search {
+  width: 100%;
+  display: flex;
+}
+
+.Search input {
+  height: 2rem;
+  padding: 0.5rem;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  font-size: 1.5rem;
+  flex-grow: 4;
+}
+
+.Search button {
+  padding: 0.5rem;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background-color: var(--tertiary);
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+
 .CardCatalog {
   display: grid;
   grid-gap: 5px;
@@ -84,9 +112,20 @@ a.visited {
   color: var(--tertiary);
 }
 
-/* .loading-spinner {
+.Footer {
+  display: flex;
+  align-items: center;
+  height: 3rem;
+}
+
+.Footer p {
+  width: 100%;
+  text-align: center;
+}
+
+.loading-spinner {
   color: var(--background);
-} */
+}
 
 /* @media (min-width: 768px) {
   .Card {

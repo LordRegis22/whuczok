@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import CardCatalog from "./components/CardCatalog";
+import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 //import data from "./data.js";
 
@@ -28,7 +29,8 @@ function App() {
 
   const [results, setResults] = useState([]);
   const [reloaded, setReloaded] = useState(false);
-  const [topic, setTopic] = useState("recipes");
+  const defaultTopic = "recipes";
+  const [topic, setTopic] = useState(defaultTopic);
   const url = `https://newsapi.org/v2/everything?q=${topic}&language=en&pageSize=100&sortBy=publishedAt&apiKey=${process.env.REACT_APP_NEWS_API}`;
 
   function reload() {
@@ -44,17 +46,29 @@ function App() {
     fetch(url)
       .then((response) => response.json())
       .then((data) => setResults(data.articles));
-  }, []);
+  }, [topic]);
+
+  const searchHandler = (e) => {
+    if (e === "") {
+      setTopic(defaultTopic);
+    } else {
+      let cleanedString = e.replace(" ", "+");
+      setTopic(cleanedString);
+    }
+
+    reload();
+  };
 
   return (
     <div className="App" id="App">
       <Navbar reload={reload} />
-      <CardCatalog results={results} reloaded={reloaded} />
-      <div style={{ display: "flex", alignItems: "center", height: "3rem" }}>
-        <p style={{ width: "100%", textAlign: "center" }}>
-          Gratefully powered by <a href="https://newsapi.org">NewsAPI.org</a>
-        </p>
-      </div>
+      <CardCatalog
+        results={results}
+        reloaded={reloaded}
+        topic={topic}
+        searchHandler={searchHandler}
+      />
+      <Footer />
     </div>
   );
 }
