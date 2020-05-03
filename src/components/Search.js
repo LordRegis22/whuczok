@@ -9,7 +9,7 @@ function Search(props) {
   return (
     <div className="Search">
       <input
-        placeholder={props.topic}
+        placeholder={props.topic.replace("+", " ")}
         value={inputTopic}
         onChange={handleInput}
       ></input>

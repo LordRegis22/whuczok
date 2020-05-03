@@ -6,7 +6,7 @@ import Navbar from "./components/Navbar";
 //import data from "./data.js";
 
 function App() {
-  //const [favorites, setFavorites] = useState([]);
+  const [favorites, setFavorites] = useState([]);
 
   // const inFavorites = identifier => {
   // let object;
@@ -22,10 +22,10 @@ function App() {
   // return inArray;
   // };
 
-  // const addToFavorites = newsItem => {
-  //   console.log("added!");
-  //   setFavorites([...favorites, newsItem]);
-  // };
+  const addToFavorites = (newsItem) => {
+    console.log("added!");
+    setFavorites([...favorites, newsItem]);
+  };
 
   const [results, setResults] = useState([]);
   const [reloaded, setReloaded] = useState(false);
