@@ -1,5 +1,6 @@
 :root {
   --background: #381460;
+  --transparentbackground: rgba(56, 20, 96, 0.8);
   --primary: #b21f66;
   --secondary: #fe346e;
   --tertiary: #ffbd69;
@@ -58,6 +59,14 @@ a.visited {
   margin-right: 10px;
 }
 
+.Sidebar {
+  background-color: var(--transparentbackground);
+  overflow: hidden;
+}
+
+.sidebar-container {
+  padding: 10px;
+}
 .Search {
   width: 100%;
   display: flex;

@@ -4,15 +4,20 @@ import CardCatalog from "./components/CardCatalog";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import FavoriteStar from "./components/FavoriteStar";
+import Sidebar from "./components/Sidebar";
 //import data from "./data.js";
+
+const defaultTopic = "recipes";
 
 function App() {
   const [favorites, setFavorites] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [results, setResults] = useState([]);
   const [reloaded, setReloaded] = useState(false);
-  const [loading, setLoading] = useState(true);
-  const defaultTopic = "recipes";
+  const [scrolled, setScrolled] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [topic, setTopic] = useState(defaultTopic);
+
   const url = `https://newsapi.org/v2/everything?q=${topic}&language=en&pageSize=100&sortBy=publishedAt&apiKey=${process.env.REACT_APP_NEWS_API}`;
 
   function reload() {
@@ -33,6 +38,16 @@ function App() {
       .then((data) => setResults(data.articles))
       .then(setLoading(false));
   }, [topic]);
+
+  function navHeight() {
+    return window.pageYOffset > 100 ? setScrolled(true) : setScrolled(false);
+  }
+  window.addEventListener("scroll", navHeight);
+
+  const handleSidebarOpen = () => {
+    console.log("click");
+    setSidebarOpen(!sidebarOpen);
+  };
 
   const isInFavorites = (addedFavorite) => {
     let inFavorites = false;
@@ -69,13 +84,22 @@ function App() {
 
   return (
     <div className="App" id="App">
-      <Navbar reload={reload} favorites={favorites} />
+      <Navbar
+        reload={reload}
+        favorites={favorites}
+        handleSidebarOpen={handleSidebarOpen}
+        scrolled={scrolled}
+      />
+      <Sidebar
+        sidebarOpen={sidebarOpen}
+        topic={topic}
+        searchHandler={searchHandler}
+        scrolled={scrolled}
+      />
       <CardCatalog
         loading={loading}
         results={results}
         reloaded={reloaded}
-        topic={topic}
-        searchHandler={searchHandler}
         addToFavorites={addToFavorites}
         isInFavorites={isInFavorites}
       />

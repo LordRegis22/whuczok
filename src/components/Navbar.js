@@ -3,10 +3,11 @@ import { useSpring, animated } from "react-spring";
 import isabelle from "../img/isabelle.png";
 
 function Navbar(props) {
-  const [scrolled, setScrolled] = useState(false);
+  const { scrolled } = props;
   const [viewFavorites, setViewFavorites] = useState(false);
   const navProps = useSpring({
     height: scrolled ? "2rem" : "4rem",
+    overflow: "hidden",
   });
 
   const logoProps = useSpring({
@@ -19,10 +20,6 @@ function Navbar(props) {
     opacity: scrolled ? 0 : 1,
     marginLeft: "1rem",
   });
-  function navHeight() {
-    return window.pageYOffset > 100 ? setScrolled(true) : setScrolled(false);
-  }
-  window.addEventListener("scroll", navHeight);
 
   function handleClick() {
     props.reload();
@@ -38,7 +35,11 @@ function Navbar(props) {
         />
       </animated.div>
       <animated.h1 style={titleProps}>WHÜCZØK</animated.h1>
-      <animated.div style={logoProps} className="favorite-badge">
+      <animated.div
+        style={logoProps}
+        className="favorite-badge"
+        onClick={props.handleSidebarOpen}
+      >
         <h2>{props.favorites.length}</h2>
       </animated.div>
     </animated.div>
