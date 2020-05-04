@@ -11,19 +11,26 @@ function CardCatalog(props) {
           topic={props.topic}
           searchHandler={props.searchHandler}
         ></Search>
-        <ReloadedMessage reloaded={props.reloaded} />
-        {props.results.length == 0 ? (
-          <p style={{ textAlign: "center" }}>
-            Looks like there's no articles on this topic!
-          </p>
+        {props.loading ? (
+          <p>Loading...</p>
         ) : (
-          props.results.map((newsItem, index) => (
-            <Card
-              key={index}
-              newsItem={newsItem}
-              addToFavorites={props.addToFavorites}
-            />
-          ))
+          <>
+            <ReloadedMessage reloaded={props.reloaded} />
+            {props.results.length === 0 ? (
+              <p style={{ textAlign: "center" }}>
+                Looks like there's no articles on this topic!
+              </p>
+            ) : (
+              props.results.map((newsItem, index) => (
+                <Card
+                  key={newsItem.url}
+                  newsItem={newsItem}
+                  addToFavorites={props.addToFavorites}
+                  isInFavorites={props.isInFavorites}
+                />
+              ))
+            )}
+          </>
         )}
       </div>
     </>

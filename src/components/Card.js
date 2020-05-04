@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import FavoriteStar from "./FavoriteStar";
 import CardImage from "./CardImage";
 
@@ -17,8 +17,10 @@ function Card(props) {
 
   const handleClick = (newsItem) => {
     setFavorite((favorite) => !favorite);
-    //props.addToFavorites(newsItem);
+    props.addToFavorites(newsItem);
   };
+
+  useEffect(() => setFavorite(() => props.isInFavorites(newsItem)), []);
 
   return (
     <div className="Card">

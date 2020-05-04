@@ -13,7 +13,7 @@ function Search(props) {
         value={inputTopic}
         onChange={handleInput}
       ></input>
-      <button onClick={() => props.searchHandler(inputTopic)}>
+      <button type="submit" onClick={() => props.searchHandler(inputTopic)}>
         <FaSearch style={{ fontSize: "2rem" }} />
       </button>
     </div>
