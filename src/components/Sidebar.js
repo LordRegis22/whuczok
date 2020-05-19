@@ -11,6 +11,7 @@ function Sidebar({
   searchHandler,
   currentTopics,
   favorites,
+  changeFavorites,
   removeCurrentTopic,
 }) {
   const sidebarSpring = useSpring({
@@ -31,7 +32,10 @@ function Sidebar({
             currentTopics={currentTopics}
             removeCurrentTopic={removeCurrentTopic}
           />
-          <FavoritesList favorites={favorites} />
+          <FavoritesList
+            favorites={favorites}
+            changeFavorites={changeFavorites}
+          />
         </div>
       </div>
     </animated.div>
