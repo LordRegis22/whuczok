@@ -125,7 +125,7 @@ function App() {
       setTopic(defaultTopic);
     } else {
       let cleanedString = e.replace(' ', '+');
-      //setTopic(cleanedString);
+      setTopic(cleanedString);
       if (!checkForTopic(cleanedString, currentTopics)) {
         setCurrentTopics([...currentTopics, cleanedString]);
       }
