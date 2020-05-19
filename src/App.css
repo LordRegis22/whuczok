@@ -61,11 +61,17 @@ a.visited {
 
 .Sidebar {
   background-color: var(--transparentbackground);
-  overflow: hidden;
 }
 
 .sidebar-container {
+  position: relative;
   padding: 10px;
+  overflow: auto;
+}
+
+.sidebar-scrollable {
+  height: 100%;
+  overflow: scroll;
 }
 .Search {
   width: 100%;
@@ -82,6 +88,8 @@ a.visited {
   border-bottom-right-radius: 0;
   font-size: 1.5rem;
   flex-grow: 4;
+  background-color: white;
+  border: none;
 }
 
 .Search button {
@@ -97,6 +105,46 @@ a.visited {
   color: var(--background);
 }
 
+.CurrentTopics {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0.5rem;
+  padding: 0.5rem;
+}
+
+.CurrentTopic {
+  background-color: var(--primary);
+  width: auto;
+  border-radius: 25px;
+  padding: 5px 5px 5px 15px;
+  margin: 5px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.current-topic-close {
+  margin-left: 5px;
+}
+
+.FavoritePreview {
+  background-color: white;
+  padding: 5px;
+  margin: 5px 0px;
+  border-radius: 5px;
+  color: var(--primary);
+  display: flex;
+}
+.favorite-preview-image {
+  width: 20vw;
+  height: 20vw;
+  float: left;
+  margin-right: 5px;
+  border-radius: 5px;
+}
 .CardCatalog {
   display: grid;
   grid-gap: 5px;
