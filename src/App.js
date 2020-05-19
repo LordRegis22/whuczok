@@ -98,8 +98,7 @@ function App() {
     return inFavorites;
   };
 
-  const addToFavorites = (newsItem) => {
-    console.log(isInFavorites(newsItem));
+  const changeFavorites = (newsItem) => {
     if (isInFavorites(newsItem)) {
       setFavorites(
         favorites.filter((favorite) => {
@@ -111,13 +110,25 @@ function App() {
     }
   };
 
+  const checkForTopic = (topic, array) => {
+    for (let el of array) {
+      if (el === topic) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  };
+
   const searchHandler = (e) => {
     if (e === '') {
       setTopic(defaultTopic);
     } else {
       let cleanedString = e.replace(' ', '+');
-      setTopic(cleanedString);
-      setCurrentTopics([...currentTopics, cleanedString]);
+      //setTopic(cleanedString);
+      if (!checkForTopic(cleanedString, currentTopics)) {
+        setCurrentTopics([...currentTopics, cleanedString]);
+      }
     }
 
     reload();
@@ -135,6 +146,7 @@ function App() {
       <Navbar
         reload={reload}
         favorites={favorites}
+        sidebarOpen={sidebarOpen}
         handleSidebarOpen={handleSidebarOpen}
         scrolled={scrolled}
       />
@@ -145,13 +157,14 @@ function App() {
         scrolled={scrolled}
         currentTopics={currentTopics}
         favorites={favorites}
+        changeFavorites={changeFavorites}
         removeCurrentTopic={removeCurrentTopic}
       />
       <CardCatalog
         loading={loading}
         results={results}
         reloaded={reloaded}
-        addToFavorites={addToFavorites}
+        addToFavorites={changeFavorites}
         isInFavorites={isInFavorites}
       />
       <Footer />
