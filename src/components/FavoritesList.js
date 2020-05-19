@@ -1,11 +1,15 @@
 import React from 'react';
 import FavoritePreview from './FavoritePreview';
 
-function FavoritesList({ favorites }) {
+function FavoritesList({ favorites, changeFavorites }) {
   return (
     <div>
       {favorites.map((favorite) => (
-        <FavoritePreview favorite={favorite} />
+        <FavoritePreview
+          favorite={favorite}
+          changeFavorites={changeFavorites}
+          key={favorite.url}
+        />
       ))}
     </div>
   );
