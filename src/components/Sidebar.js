@@ -31,7 +31,6 @@ function Sidebar({
             currentTopics={currentTopics}
             removeCurrentTopic={removeCurrentTopic}
           />
-          {console.log('render')}
           <FavoritesList favorites={favorites} />
         </div>
       </div>
