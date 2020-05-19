@@ -6,7 +6,11 @@ function CurrentTopics({ currentTopics, removeCurrentTopic }) {
     <div className='CurrentTopics'>
       {currentTopics &&
         currentTopics.map((topic) => (
-          <CurrentTopic topic={topic} removeCurrentTopic={removeCurrentTopic} />
+          <CurrentTopic
+            topic={topic}
+            removeCurrentTopic={removeCurrentTopic}
+            key={topic}
+          />
         ))}
     </div>
   );
