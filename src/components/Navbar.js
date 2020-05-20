@@ -5,7 +5,6 @@ import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
 function Navbar(props) {
   const { scrolled } = props;
-  const [viewFavorites, setViewFavorites] = useState(false);
   const navProps = useSpring({
     height: scrolled ? '2rem' : '4rem',
     overflow: 'hidden',

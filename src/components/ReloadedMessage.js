@@ -1,17 +1,17 @@
-import React from "react";
-import { FaThumbsUp } from "react-icons/fa";
-import { animated, useSpring } from "react-spring";
+import React from 'react';
+import { FaThumbsUp } from 'react-icons/fa';
+import { animated, useSpring } from 'react-spring';
 
-function ReloadedMessage(props) {
+function ReloadedMessage({ reloaded, style }) {
   const spring = useSpring({
-    height: props.reloaded ? "7vh" : "0vh",
-    opacity: props.reloaded ? 1 : 0,
-    backgroundColor: "rgba(145,24,216,.2)",
+    height: reloaded ? '7vh' : '0vh',
+    opacity: reloaded ? 1 : 0,
+    backgroundColor: 'rgba(145,24,216,.2)',
   });
   return (
-    <animated.div className="ReloadedMessage" style={spring}>
+    <animated.div className='ReloadedMessage' style={{ ...spring, ...style }}>
       <p>
-        <span style={{ marginRight: ".5rem" }}>
+        <span style={{ marginRight: '.5rem' }}>
           <FaThumbsUp />
         </span>
         Reloaded

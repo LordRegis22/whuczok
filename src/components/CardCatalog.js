@@ -1,31 +1,51 @@
-import React from "react";
-import Card from "./Card";
-import ReloadedMessage from "./ReloadedMessage";
-import Search from "./Search";
-import { v4 as uuidv4 } from "uuid";
+import React from 'react';
+import Card from './Card';
+import ReloadedMessage from './ReloadedMessage';
+import Search from './Search';
+import { v4 as uuidv4 } from 'uuid';
 
-function CardCatalog(props) {
+function CardCatalog({
+  loading,
+  results,
+  reloaded,
+  addToFavorites,
+  isInFavorites,
+}) {
   return (
     <>
-      <div className="CardCatalog">
-        {props.loading ? (
+      {window.innerWidth >= 500 && (
+        <ReloadedMessage
+          reloaded={reloaded}
+          style={{ position: 'relative', top: '4rem', marginTop: '.5rem' }}
+        />
+      )}
+      <div className='CardCatalog' id='CardCatalog'>
+        {loading ? (
           <p>Loading...</p>
         ) : (
           <>
-            <ReloadedMessage reloaded={props.reloaded} />
-            {props.results.length === 0 ? (
-              <p style={{ textAlign: "center" }}>
-                Looks like there's no articles on this topic!
+            {results.length === 0 ? (
+              <p style={{ textAlign: 'center' }}>
+                Looks like there's no articles on this topic. Try adjusting your
+                search term.
               </p>
             ) : (
-              props.results.map((newsItem, index) => (
-                <Card
-                  key={uuidv4()}
-                  newsItem={newsItem}
-                  addToFavorites={props.addToFavorites}
-                  isInFavorites={props.isInFavorites}
-                />
-              ))
+              <>
+                {window.innerWidth < 500 && (
+                  <ReloadedMessage
+                    reloaded={reloaded}
+                    style={{ marginTop: 0 }}
+                  />
+                )}
+                {results.map((newsItem) => (
+                  <Card
+                    key={uuidv4()}
+                    newsItem={newsItem}
+                    addToFavorites={addToFavorites}
+                    isInFavorites={isInFavorites}
+                  />
+                ))}
+              </>
             )}
           </>
         )}

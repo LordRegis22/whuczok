@@ -5,15 +5,13 @@ import { MdClose } from 'react-icons/md';
 function FavoritePreview({ favorite, changeFavorites }) {
   return (
     <div className='FavoritePreview'>
-      <div>
+      <div className='favorite-preview-link'>
         <a href={favorite.url} target='_blank' rel='noopener noreferrer'>
           <img
             className='favorite-preview-image'
             src={favorite.urlToImage ? favorite.urlToImage : defaultImage}
             alt={favorite.description}
           ></img>
-        </a>
-        <a href={favorite.url} target='_blank' rel='noopener noreferrer'>
           {favorite.title}
         </a>
       </div>

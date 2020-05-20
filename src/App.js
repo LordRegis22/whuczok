@@ -1,25 +1,39 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import './App.css';
+
 import CardCatalog from './components/CardCatalog';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
-import FavoriteStar from './components/FavoriteStar';
 import Sidebar from './components/Sidebar';
 //import useNewsAPI from './hooks/useNewsAPI';
+import {
+  disableBodyScroll,
+  enableBodyScroll,
+  clearAllBodyScrollLocks,
+} from 'body-scroll-lock';
 import axios from 'axios';
 //import data from "./data.js";
 
 const defaultTopic = 'recipes';
 
+const initialTopics = localStorage.getItem('currentTopics')
+  ? JSON.parse(localStorage.getItem('currentTopics'))
+  : [defaultTopic];
+
+const initialFavorites = localStorage.getItem('favorites')
+  ? JSON.parse(localStorage.getItem('favorites'))
+  : [];
+
 function App() {
-  const [favorites, setFavorites] = useState([]);
+  const [favorites, setFavorites] = useState(initialFavorites);
   const [loading, setLoading] = useState(true);
   const [results, setResults] = useState([]);
   const [reloaded, setReloaded] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [topic, setTopic] = useState(defaultTopic);
-  const [currentTopics, setCurrentTopics] = useState([topic]);
+  const [currentTopics, setCurrentTopics] = useState(initialTopics);
+
   //const [searchAPI, articles, errorMessage] = useNewsAPI();
 
   const url = `https://newsapi.org/v2/everything?q=${topic}&language=en&pageSize=100&sortBy=publishedAt&apiKey=${process.env.REACT_APP_NEWS_API}`;
@@ -42,9 +56,15 @@ function App() {
       .then((response) => response.json())
       .then((data) => setResults(data.articles))
       .then(setReloaded(true))
-      .then(setTimeout(() => setReloaded(false), 3000))
-      .then(setLoading(false));
+      .then(setLoading(false))
+      .then(setTimeout(() => setReloaded(false), 3000));
   }
+
+  useEffect(() => {
+    if (sidebarOpen) {
+      disableBodyScroll(document.querySelector('.sidebar-scrollable'));
+    } else clearAllBodyScrollLocks();
+  }, [sidebarOpen]);
 
   useEffect(() => {
     const searchAPI = () => {
@@ -77,6 +97,14 @@ function App() {
     //   .then((response) => response.json())
     //   .then((data) => setResults(data.articles))
     //   .then(setLoading(false));
+  }, [currentTopics]);
+
+  useEffect(() => {
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  }, [favorites]);
+
+  useEffect(() => {
+    localStorage.setItem('currentTopics', JSON.stringify(currentTopics));
   }, [currentTopics]);
 
   function navHeight() {
@@ -125,7 +153,7 @@ function App() {
       setTopic(defaultTopic);
     } else {
       let cleanedString = e.replace(' ', '+');
-      setTopic(cleanedString);
+      //setTopic(cleanedString);
       if (!checkForTopic(cleanedString, currentTopics)) {
         setCurrentTopics([...currentTopics, cleanedString]);
       }

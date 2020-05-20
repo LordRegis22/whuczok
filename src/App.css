@@ -66,12 +66,13 @@ a.visited {
 .sidebar-container {
   position: relative;
   padding: 10px;
-  overflow: auto;
+  height: 100%;
 }
 
 .sidebar-scrollable {
-  height: 100%;
   overflow: scroll;
+  max-height: 85%;
+  padding-bottom: 15vh;
 }
 .Search {
   width: 100%;
@@ -137,6 +138,10 @@ a.visited {
   border-radius: 5px;
   color: var(--primary);
   display: flex;
+}
+
+.favorite-preview-link {
+  width: 100%;
 }
 .favorite-preview-image {
   width: 20vw;
