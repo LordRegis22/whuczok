@@ -116,6 +116,7 @@ function App() {
     setSidebarOpen(!sidebarOpen);
   };
 
+  // verify whether item is already in favorites array
   const isInFavorites = (addedFavorite) => {
     let inFavorites = false;
     if (favorites.every((favorite) => favorite.url !== addedFavorite.url)) {
