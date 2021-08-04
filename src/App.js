@@ -138,6 +138,7 @@ function App() {
     }
   };
 
+  // Check the topics array if the topic already exists
   const checkForTopic = (topic, array) => {
     for (let el of array) {
       if (el === topic) {
