@@ -126,6 +126,7 @@ function App() {
     return inFavorites;
   };
 
+  // update Favorites array using the newsItem passed in
   const changeFavorites = (newsItem) => {
     if (isInFavorites(newsItem)) {
       setFavorites(
