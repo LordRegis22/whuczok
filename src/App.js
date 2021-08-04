@@ -107,6 +107,7 @@ function App() {
     localStorage.setItem('currentTopics', JSON.stringify(currentTopics));
   }, [currentTopics]);
 
+  // obtain window Height for masonry
   function navHeight() {
     return window.pageYOffset > 100 ? setScrolled(true) : setScrolled(false);
   }
