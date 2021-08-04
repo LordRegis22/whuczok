@@ -148,6 +148,7 @@ function App() {
     }
   };
 
+  // handle when user inputs a search term
   const searchHandler = (e) => {
     if (e === '') {
       setTopic(defaultTopic);
