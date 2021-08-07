@@ -16,6 +16,7 @@ import axios from 'axios';
 
 const defaultTopic = 'recipes';
 
+// retrieve currentTopics from localStorage
 const initialTopics = localStorage.getItem('currentTopics')
   ? JSON.parse(localStorage.getItem('currentTopics'))
   : [defaultTopic];
