@@ -4,7 +4,7 @@ import axios from 'axios';
 export default (defaultTopic) => {
   const [articles, setArticles] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
-
+  // search API for topic
   const searchAPI = (currentTopics) => {
     axios
       .all(
