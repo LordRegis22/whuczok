@@ -103,6 +103,7 @@ function App() {
     localStorage.setItem('favorites', JSON.stringify(favorites));
   }, [favorites]);
 
+  // persist saved topics to localstorage
   useEffect(() => {
     localStorage.setItem('currentTopics', JSON.stringify(currentTopics));
   }, [currentTopics]);
