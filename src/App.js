@@ -99,6 +99,7 @@ function App() {
     //   .then(setLoading(false));
   }, [currentTopics]);
 
+  // persist saved favorites to localstorage
   useEffect(() => {
     localStorage.setItem('favorites', JSON.stringify(favorites));
   }, [favorites]);
