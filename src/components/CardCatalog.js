@@ -34,7 +34,6 @@ function CardCatalog({
               <>
                 {/* Render card for every data point */}
                 {window.innerWidth < 500 && (
-                  {/* only load reload message if width of window less than 500 */}
                   <ReloadedMessage
                     reloaded={reloaded}
                     style={{ marginTop: 0 }}
