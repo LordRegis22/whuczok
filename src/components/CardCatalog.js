@@ -32,6 +32,7 @@ function CardCatalog({
               </p>
             ) : (
               <>
+                {/* Render card for every data point */}
                 {window.innerWidth < 500 && (
                   <ReloadedMessage
                     reloaded={reloaded}
