@@ -19,6 +19,7 @@ function CardCatalog({
         />
       )}
       <div className='CardCatalog' id='CardCatalog'>
+        {/* if loading, render loading spinner */}
         {loading ? (
           <p>Loading...</p>
         ) : (
