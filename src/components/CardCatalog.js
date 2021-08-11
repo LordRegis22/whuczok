@@ -24,6 +24,7 @@ function CardCatalog({
           <p>Loading...</p>
         ) : (
           <>
+            {/* if no results, render error message */}
             {results.length === 0 ? (
               <p style={{ textAlign: 'center' }}>
                 Looks like there's no articles on this topic. Try adjusting your
