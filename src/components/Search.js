@@ -4,7 +4,7 @@ import { FaSearch } from 'react-icons/fa';
 function Search(props) {
   // Create inputHook using topic as prop
   const [inputTopic, setInputTopic] = useState(props.topic);
-  // Create input handler
+  // Input handler
   const handleInput = (e) => {
     setInputTopic(e.target.value);
   };
