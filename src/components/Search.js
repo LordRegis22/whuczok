@@ -8,7 +8,7 @@ function Search(props) {
   const handleInput = (e) => {
     setInputTopic(e.target.value);
   };
-
+  // Click handler
   const handleClick = () => {
     props.searchHandler(inputTopic);
     setInputTopic('');
