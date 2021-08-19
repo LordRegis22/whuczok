@@ -30,6 +30,7 @@ function Sidebar({
         <div className='sidebar-scrollable'>
           {/* Search component */}
           <Search topic={topic} searchHandler={searchHandler} />
+          {/* Current Topics component */}
           <CurrentTopics
             currentTopics={currentTopics}
             removeCurrentTopic={removeCurrentTopic}
