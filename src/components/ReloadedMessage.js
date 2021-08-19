@@ -2,6 +2,7 @@ import React from 'react';
 import { FaThumbsUp } from 'react-icons/fa';
 import { animated, useSpring } from 'react-spring';
 
+// declare reloaded message spring
 function ReloadedMessage({ reloaded, style }) {
   const spring = useSpring({
     height: reloaded ? '7vh' : '0vh',
