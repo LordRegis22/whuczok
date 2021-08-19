@@ -14,6 +14,7 @@ function Sidebar({
   changeFavorites,
   removeCurrentTopic,
 }) {
+  // Create sidebar animation spring
   const sidebarSpring = useSpring({
     position: 'fixed',
     right: '0px',
