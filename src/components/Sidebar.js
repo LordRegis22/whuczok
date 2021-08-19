@@ -28,6 +28,7 @@ function Sidebar({
     <animated.div className='Sidebar' style={sidebarSpring}>
       <div className='sidebar-container'>
         <div className='sidebar-scrollable'>
+          {/* Search component */}
           <Search topic={topic} searchHandler={searchHandler} />
           <CurrentTopics
             currentTopics={currentTopics}
