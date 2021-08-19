@@ -35,6 +35,7 @@ function Sidebar({
             currentTopics={currentTopics}
             removeCurrentTopic={removeCurrentTopic}
           />
+          {/* Favorites List component */}
           <FavoritesList
             favorites={favorites}
             changeFavorites={changeFavorites}
